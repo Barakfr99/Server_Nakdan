@@ -1,6 +1,6 @@
 let selectedOption = null;
 
-const API_URL = 'https://your-app-name.railway.app/nikud';  // יש להחליף בכתובת האמיתית
+const API_URL = 'https://web-production-b188.up.railway.app/nikud';
 
 document.addEventListener('DOMContentLoaded', () => {
     const wordInput = document.getElementById('wordInput');
@@ -92,6 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
         li.textContent = option;
         
         li.addEventListener('click', async () => {
+            selectedOption = option;
+            
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            li.classList.add('selected');
+            
             const success = await copyTextToClipboard(option);
             if (success) {
                 status.textContent = 'הועתק ללוח!';
@@ -120,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('applyNikud').addEventListener('click', async () => {
-    const errorMessage = document.getElementById('error-message');
+    const errorMessage = document.getElementById('error');
     errorMessage.style.display = 'none';
 
     try {
@@ -132,9 +140,9 @@ document.getElementById('applyNikud').addEventListener('click', async () => {
             action: 'replaceText',
             text: selectedOption
         });
-    } catch (error) {
-        console.error('Error applying nikud:', error);
-        errorMessage.textContent = error.message || 'אירעה שגיאה בעת החלפת הטקסט';
+    } catch (err) {
+        console.error('Error applying nikud:', err);
+        errorMessage.textContent = err.message || 'אירעה שגיאה בעת החלפת הטקסט';
         errorMessage.style.display = 'block';
     }
 });

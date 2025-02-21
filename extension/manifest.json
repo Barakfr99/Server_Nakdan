@@ -7,7 +7,7 @@
     "clipboardWrite"
   ],
   "host_permissions": [
-    "https://*.railway.app/*"
+    "https://web-production-b188.up.railway.app/*"
   ],
   "action": {
     "default_popup": "sidebar.html",

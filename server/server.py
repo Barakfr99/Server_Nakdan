@@ -1,28 +1,28 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from nakdan_test import check_web_scraping_method  # שימוש בפונקציה מהקובץ שלך
+from nakdan_test import check_web_scraping_method
+import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for Chrome extension
+CORS(app)
 
-@app.route('/nikud', methods=['POST'])
+@app.route('/nikud', methods=['POST', 'OPTIONS'])
 def get_nikud():
+    if request.method == 'OPTIONS':
+        return '', 204
+        
     try:
         data = request.get_json()
         word = data.get('word')
         
         if not word:
-            return jsonify({'error': 'לא נבחרה מילה'}), 400
+            return jsonify({'error': 'לא הוזנה מילה'}), 400
             
-        # קריאה לפונקציה שלך
         options = check_web_scraping_method(word)
-        
-        if not options:
-            return jsonify({'error': 'לא נמצאו אפשרויות ניקוד'}), 404
-            
         return jsonify({'options': options})
+        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000) 
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000))) 
