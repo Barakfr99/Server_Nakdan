@@ -1,1 +1,1 @@
-web: playwright install chromium && gunicorn server.server:app
+web: cd server && playwright install chromium && gunicorn server:app
