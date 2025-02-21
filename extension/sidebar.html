@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="wordInput" placeholder="הכנס מילה כאן" />
+        <button id="getNikud" class="primary-button">הצע ניקוד</button>
+        
+        <div id="status" class="status-message"></div>
+        <div id="error" class="error-message"></div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            טוען...
+        </div>
+        
+        <ul id="nikudList" class="options-list"></ul>
+    </div>
+    <script src="sidebar.js"></script>
+</body>
+</html> 

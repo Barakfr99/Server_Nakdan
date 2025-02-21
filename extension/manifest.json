@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Hebrew Nikud Helper",
+  "version": "1.0",
+  "description": "Get nikud suggestions for Hebrew words",
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://*.railway.app/*"
+  ],
+  "action": {
+    "default_popup": "sidebar.html",
+    "default_icon": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+} 
