@@ -1,1 +1,1 @@
-web: export PYTHONPATH=$PYTHONPATH:$PWD/server && playwright install chromium && gunicorn server:app
+web: cd server && playwright install chromium && gunicorn server:app
